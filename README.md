@@ -1,18 +1,23 @@
-# Digital_clock
+## Digital Clock using Verilog
 
-This type of clock shows numbers to display time in digital format.
-It can be in 12 or 24 hour format. There are three outputs to show the time -
-hours, minutes and seconds. It works by keeping track of time using a clock signal,
-usually provided by a quartz crystal oscillator. The clock signal is then used to increment a counter, which keeps track of the number of clock cycles that have passed.
+This is a Verilog module that implements a digital clock. The module takes an input clock signal (`clk`) and a reset signal (`rst`), and provides output signals for hours (`hr`), minutes (`min`), and seconds (`sec`). FPGA board is used in the implementation.
 
-The time units are incremented in an always block using Behavioral
-modelling. At every clock cycle we increment 'seconds'.Whenever seconds reaches
-the value '59' we increment 'minutes' by 1.Similarly whenever minutes reach '59' we
-increment 'hours' by 1.Once hours reaches the value '23' we reset the digital clock.
-To display the time, the counter is converted into a format that can be displayed
-using digits. This typically involves converting the counter to binary-coded decimal
-(BCD), which is a way of representing decimal numbers using binary digits.
-The BCD representation of the time is then used to drive a set of displays, which
-typically consist of seven-segment LED displays. Each digit is displayed using a set
-of seven LED segments, arranged in the shape of a digit. By turning on and off the
-appropriate segments for each digit, the current time can be displayed.
+### Features
+
+- Accurate Timekeeping: The module ensures accurate timekeeping by updating the hours, minutes, and seconds based on the input clock signal.
+- Reset Functionality: The clock can be reset to initialise the time to zero using the reset signal.
+- 24-Hour Format Support: The hours are limited to a range of 0 to 23, making the module compatible with a 24-hour clock format.
+
+### Description
+
+The Digital Clock module displays time in a digital format, supporting both 12-hour and 24-hour formats. It provides outputs for hours, minutes, and seconds. The module utilises a clock signal to increment a counter, tracking the elapsed time.
+
+Behavioral modeling is used to increment the time units. Each clock cycle increments the seconds, and when they reach 59, the minutes are incremented. Similarly, when the minutes reach 59, the hours are incremented. The module also includes a reset function.
+
+The module converts the counter to a suitable format for driving digital displays, typically binary-coded decimal (BCD). BCD representation is used to control seven-segment LED displays, visually displaying the time.
+
+The Digital Clock module consists of two always blocks. The first triggers on the clock signal or reset signal, incrementing the counter. The second triggers on the one-second clock or reset signal, updating the hours, minutes, and seconds.
+
+Overall, the Digital Clock module ensures accurate timekeeping by updating the time correctly and considering the reset condition.
+
+
